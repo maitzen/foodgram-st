@@ -39,20 +39,20 @@ class Base64ImageField(serializers.ImageField):
                 parts = data.split(';base64,')
                 if len(parts) != 2:
                     raise serializers.ValidationError(
-                        ERROR_MESSAGES['invalid_base64']
+                        ERROR_MESSAGES['invalid_base64'],
                     )
                 format_part = parts[0]
                 imgstr = parts[1]
                 ext = format_part.split('/')[-1]
                 if ext not in ALLOWED_IMAGE_FORMATS:
                     raise serializers.ValidationError(
-                        ERROR_MESSAGES['invalid_image_format']
+                        ERROR_MESSAGES['invalid_image_format'],
                     )
                 try:
                     decoded_file = base64.b64decode(imgstr)
                 except (TypeError, binascii.Error):
                     raise serializers.ValidationError(
-                        ERROR_MESSAGES['invalid_base64_data']
+                        ERROR_MESSAGES['invalid_base64_data'],
                     )
                 data = ContentFile(decoded_file, name=f'photo.{ext}')
             return super().to_internal_value(data)
@@ -136,7 +136,7 @@ class FollowSerializer(UserSerializer):
         return ShortRecipeSerializer(
             recipes,
             many=True,
-            context=self.context
+            context=self.context,
         ).data
 
     def get_recipes_count(self, obj):
