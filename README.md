@@ -44,13 +44,15 @@
 
 ### Пошаговая инструкция
 
-1. Склонируйте репозиторий и перейдите в каталог проекта, выполнив следующие команды:
+1. Склонируйте репозиторий и перейдите в каталог проекта,
+выполнив следующие команды:
 ```bash
 git clone git@github.com:maitzen/foodgram-st.git
 cd foodgram-st
 ```
 
-2. Создайте `.env`-файл (например, `example.env`) в каталоге backend и наполните его следующим содержимым:
+2. Создайте `.env`-файл (например, `example.env`)
+в каталоге backend и наполните его следующим содержимым:
 ```
 DB_ENGINE=django.db.backends.postgresql
 DB_NAME=postgres
@@ -68,7 +70,8 @@ npm install --legacy-peer-deps
 npm run build
 ```
 
-4. Перейдите в каталог infra и запустите проект с пересборкой посредством Docker Compose:
+4. Перейдите в каталог infra и запустите проект
+с пересборкой посредством Docker Compose:
 ```bash
 docker-compose up -d --build
 ```
